@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Parent(
     @Id val id: String,
     @DBRef val adresse: Adresse,
-    @DBRef val enfants: List<Enfant> = arrayListOf(),
+    @DBRef val enfants: ArrayList<Enfant> = arrayListOf(),
     val nom: String,
     val prenom: String,
     val genre: Char
