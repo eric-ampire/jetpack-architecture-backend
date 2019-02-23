@@ -13,22 +13,22 @@ class AdresseReactiveRestController : HttpMethodController<Adresse> {
     @Autowired
     private lateinit var adresseReactiveRepository: AdresseReactiveRepository
 
-    @PostMapping("adresses")
+    @PostMapping(value = "adresses")
     override fun add(@RequestBody item: Adresse) {
         adresseReactiveRepository.insert(item)
     }
 
-    @DeleteMapping("adresses/{id}")
+    @DeleteMapping(value = "adresses/{id}")
     override fun delete(@PathVariable("id") id: String) {
         adresseReactiveRepository.deleteById(id)
     }
 
-    @GetMapping("adresses")
+    @GetMapping(value = "adresses")
     override fun getAll(): Flux<Adresse> {
         return adresseReactiveRepository.findAll()
     }
 
-    @GetMapping("adresses/{id}")
+    @GetMapping(value = "adresses/{id}")
     override fun getOne(@PathVariable("id") id: String): Mono<Adresse> {
         return adresseReactiveRepository.findById(id)
     }

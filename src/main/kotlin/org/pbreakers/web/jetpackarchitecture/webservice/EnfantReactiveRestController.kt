@@ -22,12 +22,12 @@ class EnfantReactiveRestController : HttpMethodController<Enfant> {
         enfantReactiveRepository.deleteById(id)
     }
 
-    @GetMapping("enfants/{id}")
+    @GetMapping(value = "enfants/{id}")
     override fun getOne(@PathVariable("id") id: String): Mono<Enfant> {
         return enfantReactiveRepository.findById(id)
     }
 
-    @GetMapping("enfants")
+    @GetMapping(value = "enfants")
     override fun getAll(): Flux<Enfant> {
         return enfantReactiveRepository.findAll()
     }
