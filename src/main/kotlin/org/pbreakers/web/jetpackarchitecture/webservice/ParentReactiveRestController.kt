@@ -23,7 +23,7 @@ class ParentReactiveRestController : HttpMethodController<Parent> {
     }
 
     @GetMapping(value = "/parents/{id}")
-    override fun getOne(id: String): Mono<Parent> {
+    override fun getOne(@PathVariable("id") id: String): Mono<Parent> {
         return parentRepository.findById(id)
     }
 
