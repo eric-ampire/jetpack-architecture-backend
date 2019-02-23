@@ -10,7 +10,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'org.pbreakers.web.jetpack'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.6'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
@@ -37,13 +37,13 @@ dependencies {
 compileKotlin {
 	kotlinOptions {
 		freeCompilerArgs = ['-Xjsr305=strict']
-		jvmTarget = '1.6'
+		jvmTarget = '1.8'
 	}
 }
 
 compileTestKotlin {
 	kotlinOptions {
 		freeCompilerArgs = ['-Xjsr305=strict']
-		jvmTarget = '1.6'
+		jvmTarget = '1.8'
 	}
 }
