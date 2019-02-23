@@ -19,7 +19,7 @@ class AdresseReactiveRestController : HttpMethodController<Adresse> {
     }
 
     @DeleteMapping(value = "adresses/{id}")
-    override fun delete(@PathVariable("id") id: String) {
+    override fun delete(@PathVariable(value = "id") id: String) {
         adresseReactiveRepository.deleteById(id)
     }
 
@@ -29,7 +29,7 @@ class AdresseReactiveRestController : HttpMethodController<Adresse> {
     }
 
     @GetMapping(value = "adresses/{id}")
-    override fun getOne(@PathVariable("id") id: String): Mono<Adresse> {
+    override fun getOne(@PathVariable(value = "id") id: String): Mono<Adresse> {
         return adresseReactiveRepository.findById(id)
     }
 }
