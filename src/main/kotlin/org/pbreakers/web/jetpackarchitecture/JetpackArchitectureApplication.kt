@@ -17,46 +17,11 @@ class JetpackArchitectureApplication: CommandLineRunner {
 	@Autowired private lateinit var adresseRepository: AdresseReactiveRepository
 
 	override fun run(vararg args: String) {
-		val adresse = Adresse(
-			id = UUID.randomUUID().toString(),
-			commune = "Annexe",
-			numero = "565",
-			avenue = "Likasi"
-		)
 
-		val enfant = Enfant(
-			id = UUID.randomUUID().toString(),
-			nom = "Ampire",
-			prenom = "Eric"
-		)
-
-		enfantRepository.insert(enfant).subscribe { savedEnfant ->
-			adresseRepository.insert(adresse).subscribe { savedAdresse ->
-				val parent = Parent(
-					id = UUID.randomUUID().toString(),
-					nom = "Bigomokero",
-					prenom = "Bernard",
-					adresse = savedAdresse,
-					genre = 'M'
-				)
-
-				parentRepository.insert(parent).subscribe { savedParent ->
-
-
-					parentRepository.findById(savedAdresse.id).subscribe {
-						it.enfants.add(savedEnfant)
-
-						parentRepository.insert(it).subscribe {
-							println(savedAdresse)
-							println(savedParent)
-						}
-					}
-				}
-			}
-		}
 	}
 }
 
 fun main(args: Array<String>) {
+	System.setProperty("spring.devtools.restart.enabled", "true")
 	runApplication<JetpackArchitectureApplication>(*args)
 }
